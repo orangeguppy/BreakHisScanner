@@ -3,7 +3,17 @@ import BreakHisTable from "../components/DataSummaryTable.js";
 import DetailedBreakHisTable from "../components/DetailedDataTable.js";
 import Card from "../components/Card.js";
 
-function Home() {
+import Adenosis from '../assets/images/tumour_samples/benign/adenosis_100x.png';
+import Fibroadenoma from '../assets/images/tumour_samples/benign/fibroadenoma_100x.png';
+import Phyllodes from '../assets/images/tumour_samples/benign/phyllodes_100x.png';
+import TubularAdenoma from '../assets/images/tumour_samples/benign/tubular_adenoma_100x.png';
+
+import DuctalCarcinoma from "../assets/images/tumour_samples/malignant/ductal_carcinoma_100x.png";
+import LobularCarcinoma from "../assets/images/tumour_samples/malignant/lobular_carcinoma_100x.png";
+import MucinousCarcinoma from "../assets/images/tumour_samples/malignant/mucinous_carcinoma_100x.png";
+import PapillaryCarcinoma from "../assets/images/tumour_samples/malignant/papillary_carcinoma_100x.png";
+
+function EDA() {
   return(
     <div>
       <article class="prose mx-40 mt-10">
@@ -22,21 +32,23 @@ function Home() {
       <article class="prose mx-40 mt-10">
         <p>There are four types of benign tumours in the dataset: adenosis (A), fibroadenoma (F), phyllodes tumor (PT), and tubular adenona (TA);  and four malignant tumors (breast cancer): carcinoma (DC), lobular carcinoma (LC), mucinous carcinoma (MC) and papillary carcinoma (PC).</p>
         <h3>Benign Tumours</h3>
+        <p>*These are some descriptions I found on the internet which I hope can provide context for the dataset, but do not take it as an accurate source of medical information.*</p>
+        <p>Images are from the BreakHis 1.0 dataset.</p>
       </article>
       <div class="grid grid-cols-2 gap-4 mx-40 mt-10">
-        <Card title="Adenosis" description="Condition where the glands which produce milk become enlarged."/>
-        <Card title="Fibroadenoma" description="Condition where the glands which produce milk become enlarged."/>
-        <Card />
-        <Card />
+        <Card title="Adenosis" description="Tumour caused by enlarged milk-producing glands." imageSrc={Adenosis}/>
+        <Card title="Fibroadenoma" description="Tumour caused by excessive fibrous tissue developing in the glands." imageSrc={Fibroadenoma}/>
+        <Card title="Phyllodes Tumour" description="Tumour that develops in the connective tissue of the breast." imageSrc={Phyllodes}/>
+        <Card title="Tubular Adenoma" description="Tumour characterised by tube-like structures visible under a microscope." imageSrc={TubularAdenoma}/>
       </div>
       <article class="prose mx-40 mt-10">
         <h3>Malignant Tumours</h3>
       </article>
       <div class="grid grid-cols-2 gap-4 mx-40 mt-10">
-        <Card />
-        <Card />
-        <Card />
-        <Card />
+        <Card title="Ductal Carcinoma" description="Cancer originating from the cells lining the milk ducts." imageSrc={DuctalCarcinoma}/>
+        <Card title="Lobular Carcinoma" description="Cancer originating from cells in milk-producing glands." imageSrc={LobularCarcinoma}/>
+        <Card title="Mucinous Carcinoma" description="Characterised by cancerous cells which are surrounded by a substance called mucin, a protein found in mucus." imageSrc={MucinousCarcinoma}/>
+        <Card title="Papillary Carcinoma" description="Characterised by the presence of finger-like projections when cancerous cells are viewed under a microsope." imageSrc={PapillaryCarcinoma}/>
       </div>
       <article class="prose mx-40 mt-10">
         <h3>Here is a more detailed breakdown of the BreakHist 1.0 dataset:</h3>
@@ -49,4 +61,4 @@ function Home() {
 
   )
 }
-export default Home;
+export default EDA;

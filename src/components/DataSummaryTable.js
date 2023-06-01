@@ -38,7 +38,7 @@ function BreakHisTable() {
             <td>1,820</td>
           </tr>
           <tr>
-            <td>Total of Images</td>
+            <td>Total Images</td>
             <td>2,480</td>
             <td>5,429</td>
             <td>7,909</td>

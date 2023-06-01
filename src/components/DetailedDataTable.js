@@ -1,15 +1,25 @@
 import React from "react";
 
-function BreakHisTable() {
+function DetailedBreakHisTable() {
   return(
     <div class="overflow-x-auto">
-      <table class="table normal w-6/12 mx-40 mt-10">
+      <table class="table normal w-6/12 mx-20 mt-10">
         <thead>
           <tr>
+            <th></th>
+            <th colspan="4" class="text-center">Benign</th>
+            <th colspan="4" class="text-center">Malignant</th>
+          </tr>
+          <tr>
             <th>Magnification</th>
-            <th>Benign</th>
-            <th>Malignant</th>
-            <th>Total</th>
+            <th>Adenosis</th>
+            <th>Fibroadenoma</th>
+            <th>Phyllodes</th>
+            <th>Tubular Ade.</th>
+            <th>Ductal Carci.</th>
+            <th>Lobular Carci.</th>
+            <th>Mucinous Carci.</th>
+            <th>Papillary Carci.</th>
           </tr>
         </thead>
         <tbody>
@@ -38,7 +48,7 @@ function BreakHisTable() {
             <td>1,820</td>
           </tr>
           <tr>
-            <td>Total of Images</td>
+            <td>Total Images</td>
             <td>2,480</td>
             <td>5,429</td>
             <td>7,909</td>
@@ -47,4 +57,4 @@ function BreakHisTable() {
       </table>
     </div>
   )
-}export default BreakHisTable;
+}export default DetailedBreakHisTable;
