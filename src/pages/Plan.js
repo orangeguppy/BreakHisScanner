@@ -50,6 +50,14 @@ function Plan() {
           </li>
         </ul>
 
+        <h3>Fine-Tuning Process</h3>
+        <p>I will first configure the following parameters(in this order):</p>
+        <ul>
+          <li>Batch Size</li>
+          <li>Learning Rate</li>
+          <li>Choice of Optimiser</li>
+        </ul>
+
         <h3>Performance Metrics</h3>
         <p>These metrics will be used to evaluate model performance:</p>
         <ul>
