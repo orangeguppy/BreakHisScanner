@@ -31,7 +31,7 @@ function Plan() {
                 <p></p>
               </li>
               <li>
-                <h4>Reduced Computational Power and Training Time required</h4>
+                <h4>Reduced Computational Power and Time required for Training</h4>
                 <p></p>
               </li>
             </ul>
