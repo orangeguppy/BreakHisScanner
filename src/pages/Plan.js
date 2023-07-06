@@ -28,13 +28,19 @@ function Plan() {
             <ul>
               <li>
                 <h4>Capacity to detect more complex features</h4>
-                <p></p>
+                <p>Each layer in the VGG model uses ReLU as an activation function which introduces non-linearity. This additional non-linearity enables the model to detect more complex, non-linear mappings between input and output.</p>
+                <p>The 1x1 convolutional layers in configuration C (denoted as conv1-512) carry out a linear projection onto another space with the same dimensions, further adding to the non-linearity of the model.</p>
               </li>
               <li>
                 <h4>Reduced Computational Power and Time required for Training</h4>
-                <p></p>
+                <p>A stack of three 3x3 convolutional filters, with C input and output channels, will have 3(3*3 * C*C) = 27C*C parameters. In contrast, a single 7x7 layer with C input and output channels will require 7*7*C*C = 49C*C parameters.</p>
+                <p>Fewer parameters result in lower computational capacity, reduced memory requirements, and faster computations during forward and backward passes.</p>
               </li>
             </ul>
+          </li>
+          <li>
+            <h3>InceptionV4</h3>
+            <p>The first Inception architecture was proposed in another 2014 paper, called <a href='https://arxiv.org/pdf/1409.4842v1.pdf' target="_blank" class="text-blue-500 hover:underline">"Going Deeper with Convolutions"</a>, some time after the VGG paper was released. </p>
           </li>
           <li>
             <h3>ResNet-152</h3>
@@ -43,10 +49,6 @@ function Plan() {
           <li>
             <h3>DenseNet201</h3>
             <p>DenseNet201 is </p>
-          </li>
-          <li>
-            <h3>InceptionV4</h3>
-            <p>InceptionV4 is </p>
           </li>
         </ul>
 
