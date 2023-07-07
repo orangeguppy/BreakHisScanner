@@ -22,7 +22,7 @@ function FileUpload() {
       </figure>
       <div class="card-body items-center text-center">
         <h2 class="card-title">Upload a scan from your device</h2>
-        <p>It will be processed by a neural network.</p>
+        <p>The results from various CNNs will be displayed after processing.</p>
         <div class="card-actions">
           <button class="btn btn-primary">Submit for Scanning</button>
         </div>
