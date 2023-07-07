@@ -27,7 +27,6 @@ function EDA() {
     <div>
       <article class="prose mx-40 mt-10">
         <h2>Exploratory Data Analysis</h2>
-        <a href="https://web.inf.ufpr.br/vri/databases/breast-cancer-histopathological-database-breakhis/" target="_blank" class="text-blue-500 hover:underline">View the GitHub repository here</a>
         <a href="https://web.inf.ufpr.br/vri/databases/breast-cancer-histopathological-database-breakhis/" target="_blank" class="text-blue-500 hover:underline">Click here for a link to the original dataset and to find out more.</a>
         <p>Credits for Dataset Information (inclusive of all diagrams and tables) to [1] Spanhol, F., Oliveira, L. S., Petitjean, C., Heutte, L., A Dataset for Breast Cancer Histopathological Image Classification, IEEE Transactions on Biomedical Engineering (TBME), 63(7):1455-1462, 2016.</p>
         <blockquote class="text-xl italic font-semibold text-gray-900 dark:text-white">
