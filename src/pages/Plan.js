@@ -1,6 +1,7 @@
 import React from "react";
 import VGG from "../assets/images/internet_images/vgg.jpg";
 import Inception from "../assets/images/internet_images/inception.PNG";
+import ResNet from "../assets/images/internet_images/resnet.PNG";
 import NaiveInceptionModule from "../assets/images/internet_images/naive_inception_module.PNG";
 import InceptionModule from "../assets/images/internet_images/inception_module.PNG";
 import FilterSizes from "../assets/images/hand_drawn/big_small_filters.jpeg";
@@ -25,7 +26,7 @@ function Plan() {
             <h4>Motivation</h4>
             <p>This model was born from the authors&apos; attempts to improve the performance of AlexNet, a CNN model which won the Imagenet large-scale visual recognition challenge in 2012. Their findings were documented in the paper mentioned above.</p>
             <h4>Architecture</h4>
-            <p>The most significant contribution of the paper, according to the authors, was the evaluation of the effect of increasing the depth of a neural network(pushing the number of weight layers to 16-19) while keeping the size of the convolution filters very small(3x3). These modifications can be seen in the diagram extracted from the paper, where the notation conv3-256 refers to a convolutional layer with 256 filters, each 3x3 in size.</p>
+            <p>The most significant contribution of the paper, according to the authors, was evaluating the effect of increasing the depth of a neural network(pushing the number of weight layers to 16-19) while keeping the size of the convolution filters very small(3x3). These modifications can be seen in the diagram above, where the notation conv3-256 refers to a convolutional layer with 256 filters, each 3x3 in size.</p>
             <p>As the diagram below shows, a stack of three 3x3 convolutional layers has the same effective receptive field as a single 7x7 layer.</p>
             <figure><img style={{ width: 250, height: 300 }} src={FilterSizes} /></figure>
 
@@ -61,12 +62,32 @@ function Plan() {
             <p>Here are some diagrams of an Inception module from the paper.</p>
             <figure><img src={NaiveInceptionModule} /></figure>
             <figure><img src={InceptionModule} /></figure>
+            <p>The structure of an Inception model is straightforward. The input is passed into four different paths(not layers). Finally, the output from all the paths is concatenated into a single output at the end of the Inception module to be passed on to the next one.</p>
             <p>In each module, there are three filters of different sizes (1x1, 3x3, and 5x5). The goal of having differently-sized filters is to capture information from the image at different levels of abstraction.</p>
-
+            <p>The 1x1 filter does not detect spatial patterns, which refer to local variations in pixel values or intensity values in the image. It is primarily responsible for reducing the dimensionality and projections, which is why input is passed through 1x1 filters before being passed into the 3x3 and 5x5 filters. I had trouble understanding how the 1x1 filter reduced dimensionality at first, but I found a <a href='https://stats.stackexchange.com/questions/194142/what-does-1x1-convolution-mean-in-a-neural-network' target="_blank" class="text-blue-500 hover:underline">simple explanation online</a>. The reduction in dimensionality encourages sparsity, decreasing computational requirements.</p>
+            <p>Smaller filters(like the 3x3) capture smaller receptive fields, allowing more localised patterns to be detected. On the other hand, larger filters(like the 5x5) are more effective at capturing more global and larger-scale patterns. In addition, because a larger filter covers a wider area, it is can also detect relationships between distant features.</p>
+            <p>Max pooling divides the input feature map into non-overlapping regions, uses the highest value in the region to represent the region. This preserves the most prominent features and reduces the spatial dimension of the feature maps, further reducing computational requirements.</p>
+            <p>Last but not least, by combining input from the various filters and max-pooling path, the next Inception module will be able to extract information at different levels of abstraction simultaneously from the output</p>
           </li>
           <li>
             <h3>ResNet-152</h3>
-            <p>ResNet-152 is</p>
+            <p>ResNet won the ILSVRC in 2015 in image classification, detection, and localization. It was proposed in this 2016 paper by four authors.</p>
+            <p>The table below shows some architectures for ImageNet. Building blocks are shown in brackets, with the numbers of blocks stacked. Downsampling is performed by conv3 1, conv4 1, and conv5 1 with a stride of 2.</p>
+            <figure><img src={ResNet} /></figure>
+
+            <h4>Motivation</h4>
+            <p>The authors were driven to find a solution to two problems:</p>
+            <ol>
+              <li>
+                <p><b>The Vanishing/Exploding Gradient Problem</b></p>
+                <p>This refers to</p>
+              </li>
+                <p><b>The Degradation Problem</b></p>
+                <p></p>
+              <li>
+              </li>
+            </ol>
+            <h4>Architecture</h4>
           </li>
           <li>
             <h3>DenseNet201</h3>
@@ -88,17 +109,6 @@ function Plan() {
           <li>Accuracy</li>
           <li>F1 Score</li>
           <li>ROC Curve</li>
-        </ul>
-
-        <h3>References</h3>
-        <ul>
-          <li class="list-none">
-            <a href="https://arxiv.org/pdf/1409.1556.pdf" target="_blank" class="text-blue-500 hover:underline">Very Deep Convolutional Networks for Large-Scale Image Recognition by Karen Simonyan, Andrew Zisserman</a>
-          </li>
-
-          <li class="list-none">
-            <a href="https://arxiv.org/pdf/1409.1556.pdf" target="_blank" class="text-blue-500 hover:underline">Very Deep Convolutional Networks for Large-Scale Image Recognition by Karen Simonyan, Andrew Zisserman</a>
-          </li>
         </ul>
       </article>
     </div>
