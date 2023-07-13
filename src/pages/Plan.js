@@ -86,7 +86,8 @@ function Plan() {
               </li>
               <li>
                 <p><b>The Degradation Problem</b></p>
-                <p></p>
+                <p>The degradation problem refers to the common situation where increasing the depth of the network decreases its performance. While the vanishing gradient and degradation problem refer to two different problems, the vanishing gradient problem significantly contributes to the degradation problem. The authors thought that adding more layers should not degrade network performance, because if a shallower network is extended by adding identity mappings, layers which don&apos;t transform the input, performance should still be the same.</p>
+                <p>To implement identity mappings(the long curved arrow) in a network, the authors introduced a deep residual framework.</p>
               </li>
             </ol>
             <h4>Architecture</h4>
