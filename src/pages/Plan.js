@@ -79,12 +79,14 @@ function Plan() {
             <p>The authors were driven to find a solution to two problems:</p>
             <ol>
               <li>
-                <p><b>The Vanishing/Exploding Gradient Problem</b></p>
-                <p>This refers to</p>
+                <p><b>The Vanishing Gradient Problem</b></p>
+                <p>This is the chain rule used to calculate gradients for updating weights:</p>
+                <p>We can see that calculating the gradients for each weight involves multiplying the gradients throughout the network. Below is a diagram of the Sigmoid activation function:</p>
+                <p>Activation functions like Sigmoid result in a small gradient when input values are very small or very large. When many small gradient values are multiplied to calculate the gradient with respect to a weight, the resulting gradient will also have a very small value. Because this small gradient value is used to update the weights, the changes in weight values are also very small, so the network cannot learn effectively.</p>
               </li>
+              <li>
                 <p><b>The Degradation Problem</b></p>
                 <p></p>
-              <li>
               </li>
             </ol>
             <h4>Architecture</h4>
