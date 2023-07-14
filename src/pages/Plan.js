@@ -14,7 +14,7 @@ function Plan() {
         <p>There is one web page dedicated to each phase of the project. This page will document the Planning phase.</p>
 
         <h3>Scope</h3>
-        <p>The objective of this project is to fine-tune popular Convolutional Neural Network(CNN) models and determine which is the most suitable for detecting malignant tumors(cancer) in microscope scans. To familiarise myself with the theory, I read some papers and summarised what I understood, but if you want to skip straight to the implementation you could skip some of the paragraphs.</p>
+        <p>The objective of this project is to fine-tune popular Convolutional Neural Network(CNN) models and determine which is the most suitable for detecting malignant tumors(cancer) in microscope scans. To familiarise myself with the theory, I read some papers and online articles and summarised what I understood, but if you want to skip straight to the implementation you could skip some of the paragraphs.</p>
         <p>These are the models I&apos;ll be using for the project:</p>
         <ul>
           <li>
@@ -91,6 +91,20 @@ function Plan() {
               </li>
             </ol>
             <h4>Architecture</h4>
+            <p>This is a residual building block.</p>
+            <p>Here are some notations used in the paper and the diagram:</p>
+            <p><b>x</b>: The input to a specific layer or block</p>
+            <p><b>H(x)</b>: The desired mapping that maps the input to the correct output</p>
+            <p><b>F(x)</b>: <b>F(x)</b> represents the mapping that is actually learned by the network. In a traditional neural network, <b>F(x) = H(x)</b></p>
+            <p><b>H(x) - x</b> represents the changes that need to be applied to the input to transform it to the output. This is known as the residue.</p>
+            <p>The authors hypothesised that it is easier to make the network learn to map the input to the residue, instead of the desired mapping (actual output). By setting <b>F(x)= H(x) - x</b>, we can make the neural network learn to map input to the residue, rather than the desired mapping, <b>H(x)</b>.</p>
+            <p>Here is how the deep residual learning framework resolves the issues above:</p>
+            <ul>
+              <li>
+                <p><b>Vanishing Gradient</b>: By making the network focus on learning the residues between the input and output, which are smaller in magnitude than the raw input, the gradients are more likely to remain strong.</p>
+                <p><b>Degradation Problem</b>: Resolving the Vanishing Gradient problem will greatly alleviate the Degradation problem. In addition, identity mappings allow the network to skip one or more layers and directly propagate the input from an earlier layer to a later layer. The gradients can flow more easily through the network.</p>
+              </li>
+            </ul>
           </li>
           <li>
             <h3>DenseNet201</h3>
