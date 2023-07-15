@@ -99,6 +99,7 @@ function Plan() {
                 <p>To implement identity mappings(the long curved arrow) in a network, the authors introduced a deep residual framework.</p>
               </li>
             </ol>
+
             <h4>Architecture</h4>
             <p>This is a residual building block.</p>
             <p>Here are some notations used in the paper and the diagram:</p>
@@ -137,9 +138,9 @@ function Plan() {
         <h3>Fine-Tuning Process</h3>
         <p>I will try all parameter combinations (using values stated below) and select the one that produces the highest F1 Score, using Accuracy as a tie-breaker.</p>
         <ul>
-          <li>Batch Size: </li>
-          <li>Learning Rate</li>
-          <li>Choice of Optimiser</li>
+          <li>Batch Size: 16, 32, 64, 128</li>
+          <li>Learning Rate: 0.01, 0.001, 0.005</li>
+          <li>Choice of Optimiser: Adam, Lion</li>
         </ul>
         <h3>Performance Metrics</h3>
         <p>These metrics will be used to evaluate model performance:</p>
