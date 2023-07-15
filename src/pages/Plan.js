@@ -4,7 +4,10 @@ import Inception from "../assets/images/internet_images/inception.PNG";
 import ResNet from "../assets/images/internet_images/resnet.PNG";
 import NaiveInceptionModule from "../assets/images/internet_images/naive_inception_module.PNG";
 import InceptionModule from "../assets/images/internet_images/inception_module.PNG";
+import DenseNet from "../assets/images/internet_images/densenet.PNG";
+import DenseNetSummary from "../assets/images/internet_images/densenet_summary_image.PNG"
 import FilterSizes from "../assets/images/hand_drawn/big_small_filters.jpeg";
+import SigmoidFxn from "../assets/images/internet_images/sigmoid.png";
 
 function Plan() {
   return(
@@ -16,10 +19,12 @@ function Plan() {
         <h3>Scope</h3>
         <p>The objective of this project is to fine-tune popular Convolutional Neural Network(CNN) models and determine which is the most suitable for detecting malignant tumors(cancer) in microscope scans. To familiarise myself with the theory, I read some papers and online articles and summarised what I understood, but if you want to skip straight to the implementation you could skip some of the paragraphs.</p>
         <p>These are the models I&apos;ll be using for the project:</p>
+        <p><b>*If not stated, all images depicting model architecture are from academic papers(links below) and are sadly not mine*</b></p>
         <ul>
           <li>
             <h3>VGG19</h3>
             <p>The VGG model was first proposed in a <a href='https://arxiv.org/pdf/1409.1556.pdf' target="_blank" class="text-blue-500 hover:underline">2014 paper, "Very Deep Convolutional Neural Networks for Large-Scale Image Recognition"</a>, by computer scientists Andrew Zisserman and Karen Simonyan.</p>
+            <p>It won the localisation task and was the 1st runner-up in the classification task during the 2014 ILSVRC (ImageNet Large Scale Visual Recognition Competition).</p>
             <p>Below are the VGG configurations proposed by the two authors.</p>
             <figure><img src={VGG} alt="Proposed VGG configurations by the authors" /></figure>
 
@@ -47,6 +52,7 @@ function Plan() {
           <li>
             <h3>InceptionV4</h3>
             <p>The Inception architecture was proposed in another <a href='https://arxiv.org/pdf/1409.4842v1.pdf' target="_blank" class="text-blue-500 hover:underline">2014 paper by 9 authors, called "Going Deeper with Convolutions"</a>.</p>
+            <p>It won the 2014 ILSVRC (ImageNet Large Scale Visual Recognition Competition).</p>
             <p>Below shows the most successful configuration of the Inception architecture found by the authors when they wrote the paper.</p>
             <figure><img src={Inception} alt="The most successful Inception architecture when the paper was published." /></figure>
 
@@ -71,7 +77,8 @@ function Plan() {
           </li>
           <li>
             <h3>ResNet-152</h3>
-            <p>ResNet won the ILSVRC in 2015 in image classification, detection, and localization. It was proposed in this 2016 paper by four authors.</p>
+            <p>The ResNet architecture was proposed a 2016 paper, <a href='https://arxiv.org/pdf/1512.03385.pdf' target="_blank" class="text-blue-500 hover:underline">"Deep Residual Learning for Image Recognition"</a>, by four authors.</p>
+            <p>ResNet won the ILSVRC in 2015 in image classification, detection, and localization.</p>
             <p>The table below shows some architectures for ImageNet. Building blocks are shown in brackets, with the numbers of blocks stacked. Downsampling is performed by conv3 1, conv4 1, and conv5 1 with a stride of 2.</p>
             <figure><img src={ResNet} /></figure>
 
@@ -80,8 +87,10 @@ function Plan() {
             <ol>
               <li>
                 <p><b>The Vanishing Gradient Problem</b></p>
-                <p>This is the chain rule used to calculate gradients for updating weights:</p>
-                <p>We can see that calculating the gradients for each weight involves multiplying the gradients throughout the network. Below is a diagram of the Sigmoid activation function:</p>
+                <p>Calculating the gradients for each weight involves multiplying the gradients throughout the network. Below is a diagram of the Sigmoid activation function:</p>
+                <figure><img src={SigmoidFxn} /></figure>
+                <p>The image above is from <a href='https://towardsdatascience.com/activation-functions-neural-networks-1cbd9f8d91d6' target="_blank" class="text-blue-500 hover:underline">here</a></p>
+
                 <p>Activation functions like Sigmoid result in a small gradient when input values are very small or very large. When many small gradient values are multiplied to calculate the gradient with respect to a weight, the resulting gradient will also have a very small value. Because this small gradient value is used to update the weights, the changes in weight values are also very small, so the network cannot learn effectively.</p>
               </li>
               <li>
@@ -108,18 +117,30 @@ function Plan() {
           </li>
           <li>
             <h3>DenseNet201</h3>
-            <p>DenseNet201 is </p>
+            <p>DenseNet was proposed in a <a href='https://arxiv.org/pdf/1608.06993.pdf' target="_blank" class="text-blue-500 hover:underline"> 2017 paper titled "Densely Connected Convolutional Networks"</a> by four authors.</p>
+            <p>It won the Best Paper Award in the 2017 Computer Vision and Pattern Recognition competition 2017, and has accumulated over 2000 citations to this day. It was produced by a collaboration between Cornwell University, TsingHua University and Facebook AI Research (FAIR).</p>
+            <figure><img src={DenseNet} /></figure>
+
+            <h4>Motivation</h4>
+            <p>Similar to ResNet, the creators of DenseNet wanted to tackle the Vanishing Gradient problem.</p>
+            <p>State-of-the-art solutions at the time alleviated the problem by using short paths from earlier layers to later layers, such as ResNet, Highway Networks, and FractalNets.</p>
+            <p>They wanted to embody this design principle with a simple connectivity pattern that maximised information flow between layers of the network.</p>
+
+            <h4>Architecture</h4>
+            <p>All layers are directly connected with each other. Each layer obtains inputs from all preceding layers, and passes all preceding input, together with its own input, to all subsequent layers.</p>
+            <figure><img src={DenseNetSummary} /></figure>
+            <p>While a traditional convolutional network with L layers would have L connections (one connection between consecutive layers), L(L+1) / 2 direct connections, since for each layer, all preceding layers&apos; feature maps are fed as inputs, and the layer&apos;s output is fed into all subsequent layers.</p>
+            <p>The authors highlighted that while ResNet combines features with summation before passing them into a layer, DenseNet concatenates features to combine them.</p>
           </li>
         </ul>
 
         <h3>Fine-Tuning Process</h3>
-        <p>I will first configure the following parameters(in this order):</p>
+        <p>I will try all parameter combinations (using values stated below) and select the one that produces the highest F1 Score, using Accuracy as a tie-breaker.</p>
         <ul>
-          <li>Batch Size</li>
+          <li>Batch Size: </li>
           <li>Learning Rate</li>
           <li>Choice of Optimiser</li>
         </ul>
-
         <h3>Performance Metrics</h3>
         <p>These metrics will be used to evaluate model performance:</p>
         <ul>
