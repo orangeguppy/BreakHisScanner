@@ -135,12 +135,15 @@ function Plan() {
           </li>
         </ul>
 
-        <h3>Fine-Tuning Process</h3>
-        <p>I will try all parameter combinations (using values stated below) and select the one that produces the highest F1 Score, using Accuracy as a tie-breaker.</p>
+        <h3>Fine-Tuning and Training Process</h3>
+        <p>I will try all parameter combinations and train/validate/test dataset splits (using values stated below) and select the one that produces the highest F1 Score, using Accuracy as a tie-breaker.</p>
         <ul>
           <li>Batch Size: 16, 32, 64, 128</li>
+          <li>Number of Epochs: </li>
           <li>Learning Rate: 0.01, 0.001, 0.005</li>
-          <li>Choice of Optimiser: Adam, Lion</li>
+          <li>Choice of Optimiser: SGD(Stochastic Gradient Descent), Adam, Lion</li>
+
+
         </ul>
         <h3>Performance Metrics</h3>
         <p>These metrics will be used to evaluate model performance:</p>
