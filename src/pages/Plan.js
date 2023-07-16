@@ -138,19 +138,36 @@ function Plan() {
         </ul>
 
         <h3>Fine-Tuning and Training Process</h3>
-        <p>I will try all parameter combinations and train/validate/test dataset splits (using values stated below) and select the one that produces the highest F1 Score, using Accuracy as a tie-breaker.</p>
+        <p>I will try all parameter combinations and train/validate/test dataset splits (using values stated below) and select the one that produces the highest F1 Score, using Accuracy as a tie-breaker. I want to try a greater range of values, but due to time constraints I will only test with these values in the meantime.</p>
         <ul>
           <li>
             <b>Batch Size</b>: 32, 64, 128
             <p>A batch is a subset of the training data. Instead of updating the model&apos;s parameters based on the entire training dataset in a single iteration, the training data is divided into smaller batches, and the model parameters are updated based on the gradients computed after each batch is processed.</p>
-            <p>Smaller batch sizes may destabilise the training process and make parameter updates noisier and fluctuate more. Each batch provides a partial estimate of the gradient, which can introduce more variance.</p>
+            <p>Smaller batch sizes might prevent the model from getting stuck in a poor local minima. This is because the model will encounter more diverse examples which can facilitate a more comprehensive exploration of the optimization landscape. However, smaller batch sizes may destabilise the training process and make parameter updates noisier and fluctuate more. Smaller sizes might introduce more variation since each batch can only provide a partial estimate of the gradient. Thus, smaller batches may need more iterations for convergence.</p>
+            <p>On the other hand, larger batch sizes might use computational resources more efficiently. Larger batch sizes may also lead to better generalisation because having more samples per batch can enable the model to detect larger-scale patterns and trends.</p>
           </li>
           <li><b>Number of Epochs</b>: 11
             <p>I&apos;ll be using pre-trained models so that I can keep the number of epochs small.</p>
           </li>
-          <li><b>Learning Rate</b>: 0.01, 0.001</li>
-          <li><b>Choice of Optimiser</b>: SGD(Stochastic Gradient Descent), Adam, Lion</li>
-          <li><b>Weight Decay</b>: 0, 0.1, 0.001, 0.0001</li>
+
+          <li>
+            <b>Learning Rate</b>: 0.01, 0.001
+            <p>This refers to the rate at which the parameter values change during each iteration of an optimisation algorithm. Smaller learning rates may mean that a model takes a longer time to converge, and vice versa.</p>
+            <p>Smaller learning rates often prevent the model from overshooting the optimal solution, and explore the local minima more thoroughly.</p>
+            <p>Larger learning rates, conversely, often help models to escape poor local minima but may increase the risk of overshooting the optimal solution.</p>
+          </li>
+
+          <li>
+            <b>Choice of Optimiser</b>: SGD(Stochastic Gradient Descent), Adam, Lion
+            <p>Optimisers are algorithms used to update model parameters to minimise loss.</p>
+
+          </li>
+          <li>
+            <b>Weight Decay</b>: 0, 0.1, 0.001, 0.0001
+            <p>Regularisation techniques are techniques which aim to reduce overfitting so that models can generalise better and perform better with new data not used for training.</p>
+            <p>Weight Decay is an example of these techniques. </p>
+          </li>
+
           <li><b>Dropout Rate</b>:
             <ul>
               <li><b>No Dropout</b></li>
