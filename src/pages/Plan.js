@@ -1,4 +1,6 @@
 import React from "react";
+import { MathJax, MathJaxContext } from "better-react-mathjax";
+
 import VGG from "../assets/images/internet_images/vgg.jpg";
 import Inception from "../assets/images/internet_images/inception.PNG";
 import ResNet from "../assets/images/internet_images/resnet.PNG";
@@ -138,19 +140,33 @@ function Plan() {
         <h3>Fine-Tuning and Training Process</h3>
         <p>I will try all parameter combinations and train/validate/test dataset splits (using values stated below) and select the one that produces the highest F1 Score, using Accuracy as a tie-breaker.</p>
         <ul>
-          <li>Batch Size: 16, 32, 64, 128</li>
-          <li>Number of Epochs: </li>
-          <li>Learning Rate: 0.01, 0.001, 0.005</li>
-          <li>Choice of Optimiser: SGD(Stochastic Gradient Descent), Adam, Lion</li>
-
-
+          <li>
+            <b>Batch Size</b>: 32, 64, 128
+            <p>A batch is a subset of the training data. Instead of updating the model&apos;s parameters based on the entire training dataset in a single iteration, the training data is divided into smaller batches, and the model parameters are updated based on the gradients computed after each batch is processed.</p>
+            <p>Smaller batch sizes may destabilise the training process and make parameter updates noisier and fluctuate more. Each batch provides a partial estimate of the gradient, which can introduce more variance.</p>
+          </li>
+          <li><b>Number of Epochs</b>: 11
+            <p>I&apos;ll be using pre-trained models so that I can keep the number of epochs small.</p>
+          </li>
+          <li><b>Learning Rate</b>: 0.01, 0.001</li>
+          <li><b>Choice of Optimiser</b>: SGD(Stochastic Gradient Descent), Adam, Lion</li>
+          <li><b>Weight Decay</b>: 0, 0.1, 0.001, 0.0001</li>
+          <li><b>Dropout Rate</b>:
+            <ul>
+              <li><b>No Dropout</b></li>
+              <li><b>Symmetric Dropout (all layers have the same Dropout)</b>: 0.1</li>
+            </ul>
+          </li>
         </ul>
         <h3>Performance Metrics</h3>
-        <p>These metrics will be used to evaluate model performance:</p>
+        <p>These metrics will be used to evaluate model performance.</p>
+        <p><b>T</b>=True, <b>F</b>=False, <b>P</b>=Positive, <b>N</b>=Negative</p>
         <ul>
-          <li>Accuracy</li>
-          <li>F1 Score</li>
-          <li>ROC Curve</li>
+          <li>
+            <b>Accuracy</b> = <MathJax inline dynamic>{"\\(\\frac{TP + TN}{TP + TN + FP + FN} \\)"}</MathJax>
+          </li>
+          <li><b>F1 Score</b> = <MathJax inline dynamic>{"\\(\\frac{TP}{TP + 1/2(FP + FN)} \\)"}</MathJax></li>
+          <li><b>ROC Curve</b></li>
         </ul>
       </article>
     </div>

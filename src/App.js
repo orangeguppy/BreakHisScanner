@@ -6,10 +6,11 @@ import Plan from "./pages/Plan.js";
 import EDA from "./pages/EDA.js";
 import DataPrep from "./pages/DataPrep.js";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { MathJax, MathJaxContext } from "better-react-mathjax";
 
 function App() {
   return (
-    <>
+    <MathJaxContext>
       <Navbar />
         <Routes>
           <Route path="/" element={<Home/>} />
@@ -17,7 +18,7 @@ function App() {
           <Route path="/eda" element={<EDA/>} />
           <Route path="/data-prep" element={<DataPrep/>} />
         </Routes>
-    </>
+    </MathJaxContext>
   );
 }
 
