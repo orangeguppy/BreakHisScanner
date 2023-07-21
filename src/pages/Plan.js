@@ -148,7 +148,7 @@ function Plan() {
           </li>
           <li><b>Number of Epochs</b>: 11
             <p>I&apos;ll be using pre-trained models so that I can keep the number of epochs small.</p>
-            <p>Pretrained models are usually trained on huge, diverse datasets to solve a specific task, such as image classification. When you use a pretrained model, it has already learned many general features from the original task.</p>
+            <p>Pretrained models are usually trained on huge, diverse datasets to tackle tasks like image classification, so they usually already learned many general features from these tasks.</p>
           </li>
 
           <li>
