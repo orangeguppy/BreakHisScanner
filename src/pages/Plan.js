@@ -132,7 +132,7 @@ function Plan() {
             <h4>Architecture</h4>
             <p>All layers are directly connected with each other. Each layer obtains inputs from all preceding layers, and passes all preceding input, together with its own input, to all subsequent layers.</p>
             <figure><img src={DenseNetSummary} /></figure>
-            <p>While a traditional convolutional network with L layers would have L connections (one connection between consecutive layers), L(L+1) / 2 direct connections, since for each layer, all preceding layers&apos; feature maps are fed as inputs, and the layer&apos;s output is fed into all subsequent layers.</p>
+            <p>While a traditional convolutional network with L layers would have L connections (one connection between consecutive layers), for DenseNet it would be L(L+1) / 2 direct connections, since for each layer, all preceding layers&apos; feature maps are fed as inputs, and the layer&apos;s output is fed into all subsequent layers.</p>
             <p>The authors highlighted that while ResNet combines features with summation before passing them into a layer, DenseNet concatenates features to combine them.</p>
           </li>
         </ul>
@@ -148,6 +148,7 @@ function Plan() {
           </li>
           <li><b>Number of Epochs</b>: 11
             <p>I&apos;ll be using pre-trained models so that I can keep the number of epochs small.</p>
+            <p>Pretrained models are usually trained on huge, diverse datasets to solve a specific task, such as image classification. When you use a pretrained model, it has already learned many general features from the original task.</p>
           </li>
 
           <li>
@@ -164,14 +165,16 @@ function Plan() {
           </li>
           <li>
             <b>Weight Decay</b>: 0, 0.1, 0.001, 0.0001
-            <p>Regularisation techniques are techniques which aim to reduce overfitting so that models can generalise better and perform better with new data not used for training.</p>
-            <p>Weight Decay is an example of these techniques. </p>
+            <p>Weight Decay is a regularisation technique which aims to reduce overfitting so that models can generalise better and perform better with new data not used for training.</p>
+            <p>To prevent overfitting, the general approach is to prevent the model from becoming too complex. One way would be to reduce the number of parameters, but this is not ideal because having more parameters facilitates relationships between different parts of the model.</p>
+            <p>The goal of introducing Weight Decay is to allow the model to have as many parameters as required, but at the same time prevent the model from becoming too complex(by preventing model weights from getting too large) to prevent overfitting.</p>
           </li>
-
           <li><b>Dropout Rate</b>:
             <ul>
               <li><b>No Dropout</b></li>
               <li><b>Symmetric Dropout (all layers have the same Dropout)</b>: 0.1</li>
+              <p>Like Weight Decay, Dropout is a regularisation technique that also aims to reduce overfitting. Dropout aims to mitigate the problem by randomly deactivating some neurons during the training process.</p>
+              <p>The key idea is to prevent the network from becoming overly reliant on specific neurons during training. During each training iteration, some fraction (specified by the Dropout rate) of neurons in a layer has their output set to 0. The weights are not modified during Dropout, only neuron activations are affected.</p>
             </ul>
           </li>
         </ul>
@@ -185,6 +188,23 @@ function Plan() {
           <li><b>F1 Score</b> = <MathJax inline dynamic>{"\\(\\frac{TP}{TP + 1/2(FP + FN)} \\)"}</MathJax></li>
           <li><b>ROC Curve</b></li>
         </ul>
+
+        <h3>References</h3>
+          <p>All links referenced in the text</p>
+          <a href="https://cs230.stanford.edu/files/Notation.pdf" target="_blank" class="text-blue-500 hover:underline">https://cs230.stanford.edu/files/Notation.pdf</a>
+          <p></p>
+          <a href="https://towardsdatascience.com/convolutional-neural-network-for-breast-cancer-classification-52f1213dcc9" target="_blank" class="text-blue-500 hover:underline">https://towardsdatascience.com/convolutional-neural-network-for-breast-cancer-classification-52f1213dcc9</a>
+          <p></p>
+          <a href="https://towardsdatascience.com/review-densenet-image-classification-b6631a8ef803" target="_blank" class="text-blue-500 hover:underline">https://towardsdatascience.com/review-densenet-image-classification-b6631a8ef803</a>
+          <p></p>
+          <a href="https://towardsdatascience.com/the-w3h-of-alexnet-vggnet-resnet-and-inception-7baaaecccc96" target="_blank" class="text-blue-500 hover:underline">https://towardsdatascience.com/the-w3h-of-alexnet-vggnet-resnet-and-inception-7baaaecccc96</a>
+          <p></p>
+          <a href="https://towardsdatascience.com/understanding-and-calculating-the-number-of-parameters-in-convolution-neural-networks-cnns-fc88790d530d" target="_blank" class="text-blue-500 hover:underline">https://towardsdatascience.com/understanding-and-calculating-the-number-of-parameters-in-convolution-neural-networks-cnns-fc88790d530d</a>
+          <p></p>
+          <a href="https://towardsdatascience.com/classification-models-and-thresholds-97821aa5760f" target="_blank" class="text-blue-500 hover:underline">https://towardsdatascience.com/classification-models-and-thresholds-97821aa5760f</a>
+          <p></p>
+          <a href="https://towardsdatascience.com/this-thing-called-weight-decay-a7cd4bcfccab" target="_blank" class="text-blue-500 hover:underline">https://towardsdatascience.com/this-thing-called-weight-decay-a7cd4bcfccab</a>
+
       </article>
     </div>
   )
