@@ -4,6 +4,7 @@ import { MathJax, MathJaxContext } from "better-react-mathjax";
 import VGG from "../assets/images/internet_images/vgg.jpg";
 import Inception from "../assets/images/internet_images/inception.PNG";
 import ResNet from "../assets/images/internet_images/resnet.PNG";
+import ResNetBlock from "../assets/images/internet_images/resnet_building_block.PNG";
 import NaiveInceptionModule from "../assets/images/internet_images/naive_inception_module.PNG";
 import InceptionModule from "../assets/images/internet_images/inception_module.PNG";
 import DenseNet from "../assets/images/internet_images/densenet.PNG";
@@ -104,6 +105,7 @@ function Plan() {
 
             <h4>Architecture</h4>
             <p>This is a residual building block.</p>
+            <figure><img src={ResNetBlock} /></figure>
             <p>Here are some notations used in the paper and the diagram:</p>
             <p><b>x</b>: The input to a specific layer or block</p>
             <p><b>H(x)</b>: The desired mapping that maps the input to the correct output</p>
@@ -148,7 +150,7 @@ function Plan() {
           </li>
           <li><b>Number of Epochs</b>: 11
             <p>I&apos;ll be using pre-trained models so that I can keep the number of epochs small.</p>
-            <p>Pretrained models are usually trained on huge, diverse datasets to tackle tasks like image classification, so they usually already learned many general features from these tasks.</p>
+            <p>Pre-trained models are usually trained on huge, diverse datasets to tackle tasks like image classification, so they often already learned many general features from these tasks.</p>
           </li>
 
           <li>
@@ -184,6 +186,7 @@ function Plan() {
         <ul>
           <li>
             <b>Accuracy</b> = <MathJax inline dynamic>{"\\(\\frac{TP + TN}{TP + TN + FP + FN} \\)"}</MathJax>
+            <p>Accuracy measures the proportion of correctly classified samples out of the all samples in the dataset.</p>
           </li>
           <li><b>F1 Score</b> = <MathJax inline dynamic>{"\\(\\frac{TP}{TP + 1/2(FP + FN)} \\)"}</MathJax></li>
           <li><b>ROC Curve</b></li>
