@@ -11,6 +11,8 @@ import DenseNet from "../assets/images/internet_images/densenet.PNG";
 import DenseNetSummary from "../assets/images/internet_images/densenet_summary_image.PNG"
 import FilterSizes from "../assets/images/hand_drawn/big_small_filters.jpeg";
 import SigmoidFxn from "../assets/images/internet_images/sigmoid.png";
+import ROCSample from "../assets/images/internet_images/roc_sample.PNG";
+import ConfusionMatrix from "../assets/images/internet_images/confusion_matrix.PNG";
 
 function Plan() {
   return(
@@ -20,7 +22,7 @@ function Plan() {
         <p>There is one web page dedicated to each phase of the project. This page will document the Planning phase.</p>
 
         <h3>Scope</h3>
-        <p>The objective of this project is to fine-tune popular Convolutional Neural Network(CNN) models and determine which is the most suitable for detecting malignant tumors(cancer) in microscope scans. To familiarise myself with the theory, I read some papers and online articles and summarised what I understood, but if you want to skip straight to the implementation you could skip some of the paragraphs.</p>
+        <p>The objective of this project is to fine-tune popular Convolutional Neural Network(CNN) models and determine which is the most suitable for detecting malignant tumors(cancer) in microscope scans. Because I am completely new to neural networks, to familiarise myself with the theory, I read some papers and online articles and summarised what I understood, but if you want to skip straight to the implementation you could skip some of the paragraphs.</p>
         <p>These are the models I&apos;ll be using for the project:</p>
         <p><b>*If not stated, all images depicting model architecture are from academic papers(links below) and are sadly not mine*</b></p>
         <ul>
@@ -140,7 +142,7 @@ function Plan() {
         </ul>
 
         <h3>Fine-Tuning and Training Process</h3>
-        <p>I will try all parameter combinations and train/validate/test dataset splits (using values stated below) and select the one that produces the highest F1 Score, using Accuracy as a tie-breaker. I want to try a greater range of values, but due to time constraints I will only test with these values in the meantime.</p>
+        <p>I will try all parameter combinations and train/validate/test dataset splits (using values stated below) and select the one that produces the highest F1 Score, using Area under the ROC Curve as a tie-breaker. I want to try a greater range of values, but due to time constraints I will only test with these values in the meantime.</p>
         <ul>
           <li>
             <b>Batch Size</b>: 32, 64, 128
@@ -181,16 +183,43 @@ function Plan() {
           </li>
         </ul>
         <h3>Performance Metrics</h3>
-        <p>These metrics will be used to evaluate model performance.</p>
+        <p>These metrics will be used to visualise and evaluate model performance.</p>
         <p><b>T</b>=True, <b>F</b>=False, <b>P</b>=Positive, <b>N</b>=Negative</p>
         <ul>
           <li>
             <b>Accuracy</b> = <MathJax inline dynamic>{"\\(\\frac{TP + TN}{TP + TN + FP + FN} \\)"}</MathJax>
             <p>Accuracy measures the proportion of correctly classified samples out of the all samples in the dataset.</p>
           </li>
-          <li><b>F1 Score</b> = <MathJax inline dynamic>{"\\(\\frac{TP}{TP + 1/2(FP + FN)} \\)"}</MathJax></li>
-          <li><b>ROC Curve</b></li>
+
+          <li>
+            <b>Confusion Matrix</b>
+            <p>The Confusion Matrix provides a comprehensive view of the model's predictions by comparing them with the actual ground truth labels.</p>
+            <p>Here is the format of a Confusion Matrix, the image is from <a href='https://towardsdatascience.com/understanding-confusion-matrix-a9ad42dcfd62' target="_blank" class="text-blue-500 hover:underline">here</a></p>
+            <figure><img src={ConfusionMatrix} /></figure>
+          </li>
+
+          <li>
+            <b>F1 Score</b> = <MathJax inline dynamic>{"\\(\\frac{precision * recall}{precision + recall} \\)"}</MathJax> = <MathJax inline dynamic>{"\\(\\frac{TP}{TP + 1/2(FP + FN)} \\)"}</MathJax>
+            <br />
+            Precision = <MathJax inline dynamic>{"\\(\\frac{TP}{TP + FP} \\)"}</MathJax>
+            <br />
+            Recall = <MathJax inline dynamic>{"\\(\\frac{TP}{TP + FN} \\)"}</MathJax>
+            <p>F1 Score is commonly used as a performance metric for binary classification problems. It is the harmonic mean(shown above) of precision and recall, and takes values from 0 to 1. A higher F1 score indicates a better balance between precision and recall, as it shows that the model makes accurate positive predictions while minimising false positives and false negatives.</p>
+          </li>
+          <li><b>AUC - ROC Curve (Area Under Receiver Operating Characteristic Curve)</b>
+            <p>The ROC Curve is a graph that shows how the performance of a classification model varies across all classification thresholds.</p>
+            <b>True Positive Rate (TPR) / Recall</b> = <MathJax inline dynamic>{"\\(\\frac{TP}{TP + FN} \\)"}</MathJax>
+            <br />
+            <b>False Positive Rate (FPR)</b> = <MathJax inline dynamic>{"\\(\\frac{FP}{FP + TN} \\)"}</MathJax>
+            <p>Here is an example of an ROC Curve from a Machine Learning course by Google:</p>
+            <figure><img src={ROCSample} /></figure>
+            <p>If the classification threshold is lowered, more samples will be categorised as positive, increasing both True Positives and False Positives. This is why the curve increases as classification threshold increases.</p>
+            <p>The Area under the ROC Curve considers model performance at all classification thresholds, and provides a single value which represents the models ability to distinguish between classes, regardless of the classification threshold.</p>
+          </li>
         </ul>
+        <h3>Managing the Machine Learning Lifecycle</h3>
+          <p>I will Fine-Tune models using PyTorch.</p>
+          <p>I&apos;ll use MLFlow (implementation documented in a following section) to manage the machine learning lifecycle, from initial model development to deployment and more.</p>
 
         <h3>References</h3>
           <p>All links referenced in the text</p>
@@ -207,7 +236,8 @@ function Plan() {
           <a href="https://towardsdatascience.com/classification-models-and-thresholds-97821aa5760f" target="_blank" class="text-blue-500 hover:underline">https://towardsdatascience.com/classification-models-and-thresholds-97821aa5760f</a>
           <p></p>
           <a href="https://towardsdatascience.com/this-thing-called-weight-decay-a7cd4bcfccab" target="_blank" class="text-blue-500 hover:underline">https://towardsdatascience.com/this-thing-called-weight-decay-a7cd4bcfccab</a>
-
+          <p></p>
+          <a href="https://developers.google.com/machine-learning/crash-course/classification/roc-and-auc#:~:text=An%20ROC%20curve%20(receiver%20operating,model%20at%20all%20classification%20thresholds." target="_blank" class="text-blue-500 hover:underline">https://developers.google.com/machine-learning/crash-course/classification/roc-and-auc#:~:text=An%20ROC%20curve%20(receiver%20operating,model%20at%20all%20classification%20thresholds.</a>
       </article>
     </div>
   )
