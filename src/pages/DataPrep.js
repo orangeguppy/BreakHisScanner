@@ -1,7 +1,6 @@
 import React from "react";
 import BreakHisTable from "../components/DataSummaryTable.js";
 import BarGraph from "../components/DatasetBarGraphSummary.js";
-import PieChartComponent from "../components/PieChartComponent.js"
 import StandardDatasetSplits from '../assets/images/internet_images/standard_splits-removebg.png';
 
 function DataPrep() {
@@ -20,13 +19,6 @@ function DataPrep() {
       "Malignant": 3720
     }
   ]
-
-  const controlSplitData = [
-    { name: "Group A", value: 400, fill: "#0088FE" },
-    { name: "Group B", value: 300, fill: "#00C49F" },
-    { name: "Group C", value: 300, fill: "#FFBB28" },
-    { name: "Group D", value: 200, fill: "#FF8042" }
-  ];
 
   return(
     <div>

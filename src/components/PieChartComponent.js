@@ -1,4 +1,4 @@
-import React, { PureComponent } from "react";
+import React from "react";
 import { PieChart, Pie, Legend } from "recharts";
 
 function PieChartComponent(props) {

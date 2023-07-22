@@ -2,6 +2,7 @@ import React, { useState } from "react";
 
 function FileUpload() {
   const [selectedFile, setSelectedFile] = useState(null);
+  console.log(selectedFile);
 
     const handleFileChange = (event) => {
       const file = event.target.files[0];
