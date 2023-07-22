@@ -2,7 +2,7 @@ import React from "react";
 import BreakHisTable from "../components/DataSummaryTable.js";
 import BarGraph from "../components/DatasetBarGraphSummary.js";
 import PieChartComponent from "../components/PieChartComponent.js"
-import StandardDatasetSplits from '../assets/images/internet_images/standard_splits.png';
+import StandardDatasetSplits from '../assets/images/internet_images/standard_splits-removebg.png';
 
 function DataPrep() {
   const originalDataDistribution = [
@@ -54,12 +54,19 @@ function DataPrep() {
 
       <h3>Train, Validation and Test Split</h3>
       <h4>Control</h4>
-      <p>To increase the reliability of results, I will be using a split of 80 : 0 : 20 (no Validation set to validate the model during training) to act as a control.</p>
-      <h4>Three common standard splits:</h4>
+      <p>To increase the reliability of results, I will also be using a split of 80 : 0 : 20 (no Validation set to validate the model during training) to act as a control.</p>
+      <h4>Three common standard splits (image from V7 Labs)</h4>
       <img src={StandardDatasetSplits} alt="logo" />
-      <p>I will fine-tune each model using the 80 : 10 : 10 split. After that, I will try all above splits and use the one that results in the most optimal model performance(defined in the first and last section).</p>
+      <p>I will try all above splits for model training/validation/testing and use the one that results in the most optimal model performance(defined in the first and last section).</p>
+      <p>The training set is used to train the model for each epoch, and, simultaneously after each epoch, the validation set is used to measure model performance. This helps to prevent the model from overfitting the training data. After all epochs are completed, model performance will be confirmed using the test dataset.</p>
+      <p>Usually, having more hyperparameters to tune requires a larger validation set. Using a dataset with more features and dimensions would also increase the hyperparameters of the dataset, making the model more complex.</p>
+      <p>There are two important concerns to take note of when deciding the split:</p>
+        <ol>
+          <li>When less training data is made available to the model, there&apos;ll be more variance during the training process</li>
+          <li>If less validation and testing data is made available to the model, there&apos;ll be greater variance in model performance.</li>
+        </ol>
+      <p>There is no single optimal split that works for all situations. The optimal split must be decided based on the selected dataset and model.</p>
       </article>
-      <PieChartComponent data={controlSplitData}/>
     </div>
   )
 }export default DataPrep;
