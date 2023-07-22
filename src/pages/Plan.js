@@ -218,7 +218,7 @@ function Plan() {
           </li>
         </ul>
         <h3>Managing the Machine Learning Lifecycle</h3>
-          <p>I will Fine-Tune models using PyTorch.</p>
+          <p>I will develop and fine-tune models using PyTorch.</p>
           <p>I&apos;ll use MLFlow (implementation documented in a following section) to manage the machine learning lifecycle, from initial model development to deployment and more.</p>
 
         <h3>References</h3>
