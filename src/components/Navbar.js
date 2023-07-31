@@ -8,7 +8,7 @@ function Navbar() {
           <Link to="/" class="btn btn-ghost normal-case text-xl">BreakHis Scanner</Link>
         </div>
         <div class="flex-none">
-          <ul class="menu menu-horizontal px-1">
+          <ul class="menu menu-horizontal px-1" style={{ zIndex: 10 }}>
             <li><Link to="/">Tool</Link></li>
             <li tabindex="0">
               <a>

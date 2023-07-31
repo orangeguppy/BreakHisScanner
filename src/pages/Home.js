@@ -1,10 +1,11 @@
 import React from "react";
 import FileUpload from "../components/FileUpload.js";
+import Card from "../components/Card.js";
+import SampleDisplayer from "../components/SampleDisplayer.js";
+import SampleResult from "../components/SampleResult.js"
 
 function Home() {
   return(
-    <div class="flex justify-center items-center h-screen">
-      <FileUpload />
-    </div>
+    <SampleDisplayer />
   )
 }export default Home;

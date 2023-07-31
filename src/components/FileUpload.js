@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-
-function FileUpload() {
+function FileUpload(props) {
   const [selectedFile, setSelectedFile] = useState(null);
   console.log(selectedFile);
 

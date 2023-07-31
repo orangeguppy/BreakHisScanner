@@ -9,16 +9,17 @@ import { MathJaxContext } from "better-react-mathjax";
 
 function App() {
   return (
+  <>
+    <Navbar/>
     <MathJaxContext>
-      <Navbar />
         <Routes>
-          <Route path="/" element={<Home/>} />
+          <Route path="/" element={<Home />} />
           <Route path="/plan" element={<Plan/>} />
           <Route path="/eda" element={<EDA/>} />
           <Route path="/data-prep" element={<DataPrep/>} />
         </Routes>
     </MathJaxContext>
+  </>
   );
 }
-
 export default App;
