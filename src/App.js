@@ -1,6 +1,5 @@
 import './App.css';
 import Navbar from "./components/Navbar.js";
-import Home from "./pages/Home.js";
 import Plan from "./pages/Plan.js";
 import EDA from "./pages/EDA.js";
 import DataPrep from "./pages/DataPrep.js";
@@ -13,8 +12,7 @@ function App() {
     <Navbar/>
     <MathJaxContext>
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/plan" element={<Plan/>} />
+          <Route path="/" element={<Plan/>} />
           <Route path="/eda" element={<EDA/>} />
           <Route path="/data-prep" element={<DataPrep/>} />
         </Routes>
